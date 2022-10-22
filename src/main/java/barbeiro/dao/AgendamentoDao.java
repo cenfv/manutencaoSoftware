@@ -5,20 +5,44 @@ import org.hibernate.Session;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AgendamentoDao {
-    public void salvar(Agendamento agendamento) {
+
+    public boolean validaAgendamento(Agendamento agendamento, Session session){
+        try{
+
+            List agendamentos = new ArrayList<>();
+            agendamentos = session.createQuery("from Agendamento WHERE age_data = '2022-10-18' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_hora  BETWEEN '"+ agendamento.getHora() +
+                    "' AND ADDTIME('"+agendamento.getHora()+"', '00:30:00') ").getResultList();
+
+            if(agendamentos.size() > 0 ){
+                return false;
+            }
+
+        } catch (Exception erro) {
+            System.out.println("Ocorreu um erro:" + erro);
+        }
+        return true;
+    }
+
+    public boolean salvar(Agendamento agendamento) {
         try {
             Session session = ConexaoBanco.getSessionFactory().openSession();
             session.beginTransaction();
+            boolean validationRes = validaAgendamento(agendamento,session);
+            if(!validationRes) return false;
             session.merge(agendamento);
             session.getTransaction().commit();
             session.close();
             System.out.println("Registro gravado/alterado com sucesso");
+
         } catch (Exception erro) {
             System.out.println("Ocorreu um erro:" + erro);
+            return false;
         }
+       return true;
     }
     public List<Agendamento> consultar() {
         List<Agendamento> lista = new ArrayList<>();

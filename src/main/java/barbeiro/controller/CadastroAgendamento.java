@@ -11,8 +11,11 @@ import barbeiro.model.Funcionario;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import barbeiro.utils.ComboBoxLists;
 import com.jfoenix.controls.JFXTimePicker;
@@ -105,6 +108,16 @@ public class CadastroAgendamento implements Initializable {
 
         }
     }
+    private boolean validaAgendamento(Agendamento agendamento){
+        LocalDate dataAtual = LocalDate.now();
+
+        if (agendamento.getData().compareTo(dataAtual) < 0) {
+            JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
+            return false;
+        }
+
+        return true;
+    }
 
     @FXML
     private void salvar(ActionEvent event) {
@@ -152,12 +165,17 @@ public class CadastroAgendamento implements Initializable {
                         break;
                 }
                 ControleAgendamento.novoAgendamento.setDataCadastro(LocalDate.now());
-                agendamentooDao.salvar(ControleAgendamento.novoAgendamento);
-
-                Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
-                thisStage.close();
-                JOptionPane.showMessageDialog(null,"Agendamento cadastrado com sucesso!");
-
+                boolean validationRes =  validaAgendamento(ControleAgendamento.novoAgendamento);
+                if(validationRes){
+                    boolean agendamentoRes = agendamentooDao.salvar(ControleAgendamento.novoAgendamento);
+                    if(!agendamentoRes){
+                        JOptionPane.showMessageDialog(null,"Já existe um serviço para o funcionário no horário informado !");
+                        return;
+                    }
+                    Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
+                    thisStage.close();
+                    JOptionPane.showMessageDialog(null,"Agendamento cadastrado com sucesso!");
+                }
 
             }
         }
