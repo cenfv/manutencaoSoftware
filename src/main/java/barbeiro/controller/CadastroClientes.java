@@ -6,7 +6,10 @@ import barbeiro.model.Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
+
+import br.com.caelum.stella.validation.CPFValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +21,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 
 import javax.swing.*;
 
@@ -74,6 +78,25 @@ public class CadastroClientes implements Initializable {
         stage.show();
     }
 
+    private boolean validarCPF(String cpf) {
+        CPFValidator cpfValidator = new CPFValidator();
+
+        try{ cpfValidator.assertValid(cpf);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean validarDataNasc(LocalDate data){
+        LocalDate dataAtual = LocalDate.now();
+        if (data.compareTo(dataAtual) > 0) {
+            return false;
+        }
+        return true;
+    }
+
     @FXML
     private void salvar(ActionEvent event) {
         if (textFieldNome.getText().trim().isEmpty() || textFieldCpf.getText().trim().isEmpty()){
@@ -85,6 +108,17 @@ public class CadastroClientes implements Initializable {
                 JOptionPane.showMessageDialog(null,"O campo CPF é obrigatório");
             }
         }else {
+            boolean validacaoCPF = validarCPF(textFieldCpf.getText());
+            if(!validacaoCPF){
+                textFieldCpf.requestFocus();
+                        JOptionPane.showMessageDialog(null,"O CPF inserido deve ser válido!");
+                return;
+            }
+            boolean validacaoDataNasc = validarDataNasc(datePickerData.getValue());
+            if(!validacaoDataNasc){
+                JOptionPane.showMessageDialog(null,"A data de nascimento é inválida !");
+                return;
+            }
             if (ALTERAR == 1) {
                 ControleClientes.clienteSelecionado.setNome(textFieldNome.getText());
                 ControleClientes.clienteSelecionado.setCpf(textFieldCpf.getText());
