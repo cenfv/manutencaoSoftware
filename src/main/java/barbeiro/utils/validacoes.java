@@ -1,14 +1,18 @@
 package barbeiro.utils;
 
+import barbeiro.model.Agendamento;
 import br.com.caelum.stella.validation.CPFValidator;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.swing.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class validacoes {
+public class Validacoes {
     public static boolean validarEmail(String email) {
         boolean result = true;
         try {
@@ -42,6 +46,18 @@ public class validacoes {
         if (data.compareTo(dataAtual) > 0) {
             return false;
         }
+        return true;
+    }
+
+    public static boolean validaAgendamento(LocalDate data, LocalTime hora){
+        hora = hora.plusMinutes(1);
+        LocalDateTime dataAtual = LocalDateTime.now();
+        LocalDateTime dataHora = LocalDateTime.of(data,hora);
+
+        if (dataHora.compareTo(dataAtual) < 0 ) {
+            return false;
+        }
+
         return true;
     }
 

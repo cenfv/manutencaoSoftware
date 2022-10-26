@@ -57,7 +57,7 @@ public class ControleAgendamento implements Initializable, Cadastro {
         LocalDate date = LocalDate.of(1900, Month.JANUARY, 1);
         novoAgendamento.setData(date);
         LocalTime hora = LocalTime.of(0,0);
-        novoAgendamento.setHora(hora);
+        novoAgendamento.setHorarioInicio(hora);
         Servico servico = new Servico();
         Cliente cliente = new Cliente();
         Funcionario funcionario = new Funcionario();
@@ -102,17 +102,19 @@ public class ControleAgendamento implements Initializable, Cadastro {
         tableView.getColumns().clear();
         TableColumn<Agendamento, Long> colunaId = new TableColumn<>("Id");
         TableColumn<Agendamento,LocalDate> colunaData = new TableColumn<>("Data");
-        TableColumn<Agendamento,LocalTime> colunaTime = new TableColumn<>("Hora");
+        TableColumn<Agendamento,LocalTime> colunaInicio = new TableColumn<>("Horário inicio");
+        TableColumn<Agendamento,LocalTime> colunaFim = new TableColumn<>("Horário Fim");
         TableColumn<Agendamento, String> colunaCliente = new TableColumn<>("Cliente");
         TableColumn<Agendamento, String> colunaUsuario = new TableColumn<>("Funcionário");
         TableColumn<Agendamento, String> colunaServico= new TableColumn<>("Serviço");
         TableColumn<Agendamento, Boolean> colunaPago = new TableColumn<>("Pago");
 
-        tableView.getColumns().addAll(colunaId, colunaData, colunaTime, colunaCliente,colunaUsuario,colunaServico,colunaPago);
+        tableView.getColumns().addAll(colunaId, colunaData, colunaInicio,colunaFim, colunaCliente,colunaUsuario,colunaServico,colunaPago);
         colunaId.setCellValueFactory(new PropertyValueFactory("id"));
         colunaData.setCellValueFactory(new PropertyValueFactory("data"));
         colunaData.setCellFactory(new ColumnFormatter<>(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        colunaTime.setCellValueFactory(new PropertyValueFactory("hora"));
+        colunaInicio.setCellValueFactory(new PropertyValueFactory("horarioInicio"));
+        colunaFim.setCellValueFactory(new PropertyValueFactory("horarioFim"));
         colunaPago.setCellValueFactory(new PropertyValueFactory("pago"));
         colunaUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario().getNome()));
         colunaCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCliente().getNome()));

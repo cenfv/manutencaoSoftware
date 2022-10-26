@@ -13,8 +13,11 @@ public class Agendamento implements Serializable {
     private int id;
     @Column(name = "age_data",nullable = false)
     private LocalDate data;
-    @Column(name = "age_hora",nullable = false)
-    private LocalTime hora;
+    @Column(name = "age_horario_inicio",nullable = false)
+    private LocalTime horarioInicio;
+
+    @Column(name = "age_horario_fim",nullable = false)
+    private LocalTime horarioFim;
     @Column(name = "age_pago", nullable = false)
     private boolean pago;
     @OneToOne
@@ -73,12 +76,20 @@ public class Agendamento implements Serializable {
 
     public void setCliente(Cliente cliente) {this.cliente = cliente;}
 
-    public LocalTime getHora() {
-        return hora;
+    public LocalTime getHorarioInicio() {
+        return horarioInicio;
     }
 
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
+    public void setHorarioInicio(LocalTime horaioInicio) {
+        this.horarioInicio = horaioInicio;
+    }
+
+    public LocalTime getHorarioFim() {
+        return horarioFim;
+    }
+
+    public void setHorarioFim(LocalTime horarioFim) {
+        this.horarioFim = horarioFim;
     }
 
     public LocalDate getDataCadastro() {

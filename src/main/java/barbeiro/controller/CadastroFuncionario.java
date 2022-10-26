@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.validacoes.validarCPF;
+import static barbeiro.utils.Validacoes.*;
 
 public class CadastroFuncionario implements Initializable {
     private FuncionarioDao servicoDao = new FuncionarioDao();
@@ -78,10 +78,15 @@ public class CadastroFuncionario implements Initializable {
             }
 
         } else {
-            boolean validacaoCPF = validarCPF(textFieldCpf.getText());
-            if(!validacaoCPF){
+
+            if(!validarCPF(textFieldCpf.getText())){
                 textFieldCpf.requestFocus();
                 JOptionPane.showMessageDialog(null,"O CPF inserido deve ser válido!");
+                return;
+            }
+            if (!validarEmail(textFieldEmail.getText())){
+                textFieldEmail.requestFocus();
+                JOptionPane.showMessageDialog(null,"Por favor, insira um email válido");
                 return;
             }
             if (ALTERAR == 1) {

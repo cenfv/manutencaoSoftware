@@ -31,6 +31,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+import static barbeiro.utils.Validacoes.validaAgendamento;
+
 public class CadastroAgendamento implements Initializable {
     private AgendamentoDao agendamentooDao = new AgendamentoDao();
     private FuncionarioDao funcionarioDao = new FuncionarioDao();
@@ -95,7 +97,7 @@ public class CadastroAgendamento implements Initializable {
         if (ALTERAR == 1) {
             Agendamento agendamento = ControleAgendamento.agendamentoSelecionado;
             datePickerData.setValue(agendamento.getData());
-            timePickerHora.setValue(agendamento.getHora());
+            timePickerHora.setValue(agendamento.getHorarioInicio());
             comboBoxFuncionario.getSelectionModel().select(agendamento.getUsuario());
             comboBoxCliente.getSelectionModel().select(agendamento.getCliente());
             comboBoxServico.getSelectionModel().select(agendamento.getServico());
@@ -108,16 +110,7 @@ public class CadastroAgendamento implements Initializable {
 
         }
     }
-    private boolean validaAgendamento(Agendamento agendamento){
-        LocalDate dataAtual = LocalDate.now();
 
-        if (agendamento.getData().compareTo(dataAtual) < 0) {
-            JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
-            return false;
-        }
-
-        return true;
-    }
 
     @FXML
     private void salvar(ActionEvent event) {
@@ -130,10 +123,10 @@ public class CadastroAgendamento implements Initializable {
                 ControleAgendamento.agendamentoSelecionado.setServico(comboBoxServico.getValue());
                 ControleAgendamento.agendamentoSelecionado.setCliente(comboBoxCliente.getValue());
                 ControleAgendamento.agendamentoSelecionado.setData(datePickerData.getValue());
-                ControleAgendamento.agendamentoSelecionado.setHora(timePickerHora.getValue());
+                ControleAgendamento.agendamentoSelecionado.setHorarioInicio(timePickerHora.getValue());
 
                 String res = comboBoxPago.getValue();
-                switch (res){
+                switch (res) {
                     case "Sim":
                         ControleAgendamento.agendamentoSelecionado.setPago(true);
                         break;
@@ -141,7 +134,16 @@ public class CadastroAgendamento implements Initializable {
                         ControleAgendamento.agendamentoSelecionado.setPago(false);
                         break;
                 }
-                agendamentooDao.salvar(ControleAgendamento.agendamentoSelecionado);
+
+                if(!validaAgendamento(ControleAgendamento.novoAgendamento.getData(),ControleAgendamento.novoAgendamento.getHorarioInicio())){
+                    JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
+                    return;
+                }
+                boolean agendamentoRes = agendamentooDao.salvar(ControleAgendamento.agendamentoSelecionado);
+                if(!agendamentoRes){
+                    JOptionPane.showMessageDialog(null,"Já existe um serviço para o funcionário no horário informado !");
+                    return;
+                }
 
                 Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
                 thisStage.close();
@@ -154,7 +156,7 @@ public class CadastroAgendamento implements Initializable {
                 ControleAgendamento.novoAgendamento.setServico(comboBoxServico.getValue());
                 ControleAgendamento.novoAgendamento.setCliente(comboBoxCliente.getValue());
                 ControleAgendamento.novoAgendamento.setData(datePickerData.getValue());
-                ControleAgendamento.novoAgendamento.setHora(timePickerHora.getValue());
+                ControleAgendamento.novoAgendamento.setHorarioInicio(timePickerHora.getValue());
                 String res = comboBoxPago.getValue();
                 switch (res){
                     case "Sim":
@@ -165,8 +167,9 @@ public class CadastroAgendamento implements Initializable {
                         break;
                 }
                 ControleAgendamento.novoAgendamento.setDataCadastro(LocalDate.now());
-                boolean validationRes =  validaAgendamento(ControleAgendamento.novoAgendamento);
-                if(validationRes){
+                if(!validaAgendamento(ControleAgendamento.novoAgendamento.getData(),ControleAgendamento.novoAgendamento.getHorarioInicio())){
+                    JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
+                }
                     boolean agendamentoRes = agendamentooDao.salvar(ControleAgendamento.novoAgendamento);
                     if(!agendamentoRes){
                         JOptionPane.showMessageDialog(null,"Já existe um serviço para o funcionário no horário informado !");
@@ -175,14 +178,11 @@ public class CadastroAgendamento implements Initializable {
                     Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
                     thisStage.close();
                     JOptionPane.showMessageDialog(null,"Agendamento cadastrado com sucesso!");
-                }
-
             }
         }
 
 
     }
-
     @FXML
     private void cancelar(ActionEvent event) {
         Stage thisStage = (Stage) btnCancelar.getScene().getWindow();

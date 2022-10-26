@@ -14,8 +14,8 @@ public class AgendamentoDao {
         try{
 
             List agendamentos = new ArrayList<>();
-            agendamentos = session.createQuery("from Agendamento WHERE age_data = '"+agendamento.getData()+"' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_hora  BETWEEN '"+ agendamento.getHora() +
-                    "' AND ADDTIME('"+agendamento.getHora()+"', '00:30:00') ").getResultList();
+            agendamentos = session.createQuery("from Agendamento WHERE age_data = '"+agendamento.getData()+"' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_horario_fim  BETWEEN '"+ agendamento.getHorarioInicio() +
+                    "' AND ADDTIME('"+agendamento.getHorarioInicio()+"', '00:30:00') ").getResultList();
 
             if(agendamentos.size() > 0 ){
                 return false;
@@ -31,6 +31,7 @@ public class AgendamentoDao {
         try {
             Session session = ConexaoBanco.getSessionFactory().openSession();
             session.beginTransaction();
+            agendamento.setHorarioFim(agendamento.getHorarioInicio().plusMinutes(30));
             boolean validationRes = validaAgendamento(agendamento,session);
             if(!validationRes) return false;
             session.merge(agendamento);

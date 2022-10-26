@@ -6,8 +6,6 @@ import barbeiro.model.Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,12 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.*;
 
-import static barbeiro.utils.validacoes.validarEmail;
-import static barbeiro.utils.validacoes.validarTelefone;
+import static barbeiro.utils.Validacoes.validarEmail;
+import static barbeiro.utils.Validacoes.validarTelefone;
 
 public class ContatoCliente implements Initializable {
 

@@ -6,10 +6,8 @@ import barbeiro.model.Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-import br.com.caelum.stella.validation.CPFValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +23,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.validacoes.validarCPF;
-import static barbeiro.utils.validacoes.validarDataNasc;
+import static barbeiro.utils.Validacoes.validarCPF;
+import static barbeiro.utils.Validacoes.validarDataNasc;
 
 public class CadastroClientes implements Initializable {
     private ClienteDao clienteDao = new ClienteDao();
@@ -94,17 +92,17 @@ public class CadastroClientes implements Initializable {
                 JOptionPane.showMessageDialog(null,"O campo CPF é obrigatório");
             }
         }else {
-            boolean validacaoCPF = validarCPF(textFieldCpf.getText());
-            if(!validacaoCPF){
+
+            if(!validarCPF(textFieldCpf.getText())){
                 textFieldCpf.requestFocus();
                         JOptionPane.showMessageDialog(null,"O CPF inserido deve ser válido!");
                 return;
             }
-            boolean validacaoDataNasc = validarDataNasc(datePickerData.getValue());
-            if(!validacaoDataNasc){
+            if(!validarDataNasc(datePickerData.getValue())){
                 JOptionPane.showMessageDialog(null,"A data de nascimento é inválida !");
                 return;
             }
+
             if (ALTERAR == 1) {
                 ControleClientes.clienteSelecionado.setNome(textFieldNome.getText());
                 ControleClientes.clienteSelecionado.setCpf(textFieldCpf.getText());
