@@ -14,7 +14,7 @@ public class AgendamentoDao {
         try{
 
             List agendamentos = new ArrayList<>();
-            agendamentos = session.createQuery("from Agendamento WHERE age_data = '2022-10-18' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_hora  BETWEEN '"+ agendamento.getHora() +
+            agendamentos = session.createQuery("from Agendamento WHERE age_data = '"+agendamento.getData()+"' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_hora  BETWEEN '"+ agendamento.getHora() +
                     "' AND ADDTIME('"+agendamento.getHora()+"', '00:30:00') ").getResultList();
 
             if(agendamentos.size() > 0 ){

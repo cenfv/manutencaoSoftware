@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+import static barbeiro.utils.validacoes.validarCPF;
+
 public class CadastroFuncionario implements Initializable {
     private FuncionarioDao servicoDao = new FuncionarioDao();
     public static int ALTERAR = 0;
@@ -76,6 +78,12 @@ public class CadastroFuncionario implements Initializable {
             }
 
         } else {
+            boolean validacaoCPF = validarCPF(textFieldCpf.getText());
+            if(!validacaoCPF){
+                textFieldCpf.requestFocus();
+                JOptionPane.showMessageDialog(null,"O CPF inserido deve ser válido!");
+                return;
+            }
             if (ALTERAR == 1) {
                 ControleFuncionario.funcionarioSelecionado.setNome(textFieldNome.getText());
                 ControleFuncionario.funcionarioSelecionado.setCpf(textFieldCpf.getText());

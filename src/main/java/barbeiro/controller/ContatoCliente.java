@@ -20,6 +20,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.*;
 
+import static barbeiro.utils.validacoes.validarEmail;
+import static barbeiro.utils.validacoes.validarTelefone;
+
 public class ContatoCliente implements Initializable {
 
     private ContatoDao contatoDao = new ContatoDao();
@@ -39,23 +42,6 @@ public class ContatoCliente implements Initializable {
         carregarDados();
     }
 
-    private boolean validarEmail(String email) {
-        boolean result = true;
-        try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
-        } catch (AddressException ex) {
-            result = false;
-        }
-        return result;
-    }
-
-    public static boolean validarTelefone(String telefone)
-    {
-        Pattern p = Pattern.compile("^\\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$");
-        Matcher m = p.matcher(telefone);
-        return (m.matches());
-    }
 
     @FXML
     private void salvar(ActionEvent event) throws IOException {

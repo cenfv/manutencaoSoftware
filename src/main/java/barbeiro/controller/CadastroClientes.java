@@ -25,6 +25,9 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+import static barbeiro.utils.validacoes.validarCPF;
+import static barbeiro.utils.validacoes.validarDataNasc;
+
 public class CadastroClientes implements Initializable {
     private ClienteDao clienteDao = new ClienteDao();
     public static int ALTERAR = 0;
@@ -78,24 +81,7 @@ public class CadastroClientes implements Initializable {
         stage.show();
     }
 
-    private boolean validarCPF(String cpf) {
-        CPFValidator cpfValidator = new CPFValidator();
 
-        try{ cpfValidator.assertValid(cpf);
-            return true;
-        }catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean validarDataNasc(LocalDate data){
-        LocalDate dataAtual = LocalDate.now();
-        if (data.compareTo(dataAtual) > 0) {
-            return false;
-        }
-        return true;
-    }
 
     @FXML
     private void salvar(ActionEvent event) {
