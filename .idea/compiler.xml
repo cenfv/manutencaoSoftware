@@ -13,4 +13,9 @@
       <module name="Barbeiro" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Barbeiro" options="-bootclasspath C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\resources.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\rt.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\sunrsasign.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\jsse.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\jce.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\charsets.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\lib\jfr.jar;C:\Users\kadu1\.jdks\liberica-1.8.0_345\jre\classes;$USER_HOME$/.jdks/liberica-1.8.0_345/jre/lib/jfxrt.jar" />
+    </option>
+  </component>
 </project>

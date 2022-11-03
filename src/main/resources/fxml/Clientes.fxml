@@ -26,11 +26,11 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                  <MenuItem mnemonicParsing="false" text="Alterar">
+                  <MenuItem mnemonicParsing="false" onAction="#alterar" text="Alterar">
                      <graphic>
                         <FontAwesomeIconView glyphName="PENCIL" />
                      </graphic></MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Excluir">
+                  <MenuItem mnemonicParsing="false" onAction="#excluir" text="Excluir">
                      <graphic>
                         <FontAwesomeIconView glyphName="TRASH" />
                      </graphic></MenuItem>

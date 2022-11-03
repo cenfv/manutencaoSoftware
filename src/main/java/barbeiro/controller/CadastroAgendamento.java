@@ -139,6 +139,7 @@ public class CadastroAgendamento implements Initializable {
                     JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
                     return;
                 }
+
                 boolean agendamentoRes = agendamentooDao.salvar(ControleAgendamento.agendamentoSelecionado);
                 if(!agendamentoRes){
                     JOptionPane.showMessageDialog(null,"Já existe um serviço para o funcionário no horário informado !");
@@ -169,6 +170,7 @@ public class CadastroAgendamento implements Initializable {
                 ControleAgendamento.novoAgendamento.setDataCadastro(LocalDate.now());
                 if(!validaAgendamento(ControleAgendamento.novoAgendamento.getData(),ControleAgendamento.novoAgendamento.getHorarioInicio())){
                     JOptionPane.showMessageDialog(null,"Não é possível cadastrar um agendamento com uma data passada !");
+                    return;
                 }
                     boolean agendamentoRes = agendamentooDao.salvar(ControleAgendamento.novoAgendamento);
                     if(!agendamentoRes){

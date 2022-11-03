@@ -35,11 +35,10 @@
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.4.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.41" level="project" />
+    <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:8.40.18" level="project" />
+    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:8.0.8" level="project" />
     <orderEntry type="library" name="Maven: br.com.caelum.stella:caelum-stella-core:2.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.2" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="Maven: unknown.binary:mysql-connector-java-5.1.23-bin:SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:8.40.18" level="project" />
-    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:8.0.8" level="project" />
   </component>
 </module>

@@ -1,11 +1,9 @@
 package barbeiro.utils;
 
-import barbeiro.model.Agendamento;
 import br.com.caelum.stella.validation.CPFValidator;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
