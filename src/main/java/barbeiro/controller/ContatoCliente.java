@@ -45,15 +45,15 @@ public class ContatoCliente implements Initializable {
             JOptionPane.showMessageDialog(null,"Por favor, preencha ao menos um contato!");
 
         }else {
-            if (!validarEmail(TextFieldEmail.getText())){
+            if (!TextFieldEmail.getText().isEmpty() && !validarEmail(TextFieldEmail.getText())){
                 JOptionPane.showMessageDialog(null,"Por favor, insira um email válido");
                 return;
             }
-            if (!validarTelefone(TextFieldTelefoneC.getText())){
+            if (!TextFieldTelefoneC.getText().isEmpty() && !validarTelefone(TextFieldTelefoneC.getText())){
                 JOptionPane.showMessageDialog(null,"Por favor, insira um Telefone celular válido");
                 return;
             }
-            if (!validarTelefone(TextFieldTelefoneF.getText())){
+            if (!TextFieldTelefoneF.getText().isEmpty() && !validarTelefone(TextFieldTelefoneF.getText())){
                 JOptionPane.showMessageDialog(null,"Por favor, insira um Telefone fixo válido");
                 return;
             }

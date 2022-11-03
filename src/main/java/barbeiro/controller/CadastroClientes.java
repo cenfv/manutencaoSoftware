@@ -107,6 +107,17 @@ public class CadastroClientes implements Initializable {
                 ControleClientes.clienteSelecionado.setNome(textFieldNome.getText());
                 ControleClientes.clienteSelecionado.setCpf(textFieldCpf.getText());
                 ControleClientes.clienteSelecionado.setDataNascimento(datePickerData.getValue());
+
+                if( ControleClientes.clienteSelecionado.getContato().getEmail().isEmpty() && ControleClientes.clienteSelecionado.getContato().getTelefoneCelular().isEmpty() && ControleClientes.clienteSelecionado.getContato().getTelefoneFixo().isEmpty() )
+                {
+                    JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um contato para o cliente");
+                    return;
+                }
+
+                if(ControleClientes.clienteSelecionado.getEndereco().getRua().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um endereço para o cliente");
+                    return;
+                }
                 clienteDao.salvar(ControleClientes.clienteSelecionado);
 
                 Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
@@ -118,6 +129,16 @@ public class CadastroClientes implements Initializable {
                 ControleClientes.novoCliente.setDataNascimento(datePickerData.getValue());
                 LocalDate date = LocalDate.now();
                 ControleClientes.novoCliente.setDataCadastro(date);
+
+                if( ControleClientes.novoCliente.getContato().getEmail().isEmpty() && ControleClientes.novoCliente.getContato().getTelefoneCelular().isEmpty() && ControleClientes.novoCliente.getContato().getTelefoneFixo().isEmpty() )
+                {
+                    JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um contato para o cliente");
+                    return;
+                }
+                if(ControleClientes.novoCliente.getEndereco().getRua().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um endereço para o cliente");
+                    return;
+                }
                 clienteDao.salvar(ControleClientes.novoCliente);
 
                 Stage thisStage = (Stage) btnSalvar.getScene().getWindow();
