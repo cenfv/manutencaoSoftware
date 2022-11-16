@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validacoes {
+public class Validacao {
     public static boolean validarEmail(String email) {
         boolean result = true;
         try {

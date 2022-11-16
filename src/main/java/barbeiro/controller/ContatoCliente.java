@@ -16,8 +16,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.Validacoes.validarEmail;
-import static barbeiro.utils.Validacoes.validarTelefone;
+import static barbeiro.utils.Validacao.validarEmail;
+import static barbeiro.utils.Validacao.validarTelefone;
 
 public class ContatoCliente implements Initializable {
 

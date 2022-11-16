@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.Validacoes.validaAgendamento;
+import static barbeiro.utils.Validacao.validaAgendamento;
 
 public class CadastroAgendamento implements Initializable {
     private AgendamentoDao agendamentooDao = new AgendamentoDao();

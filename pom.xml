@@ -15,7 +15,7 @@
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>Your Organisation</name>
+        <name>UTFPR</name>
     </organization>
 
     <build>

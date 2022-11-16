@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.Validacoes.*;
+import static barbeiro.utils.Validacao.*;
 
 public class CadastroFuncionario implements Initializable {
     private FuncionarioDao servicoDao = new FuncionarioDao();

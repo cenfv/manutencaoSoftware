@@ -23,8 +23,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-import static barbeiro.utils.Validacoes.validarCPF;
-import static barbeiro.utils.Validacoes.validarDataNasc;
+import static barbeiro.utils.Validacao.validarCPF;
+import static barbeiro.utils.Validacao.validarDataNasc;
 
 public class CadastroClientes implements Initializable {
     private ClienteDao clienteDao = new ClienteDao();
