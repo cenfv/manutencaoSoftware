@@ -11,11 +11,8 @@ import barbeiro.model.Funcionario;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import barbeiro.utils.ComboBoxLists;
 import com.jfoenix.controls.JFXTimePicker;

@@ -6,7 +6,6 @@
     <artifactId>Barbeiro</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>Barbeiro</name>
 
     <properties>
@@ -23,7 +22,6 @@
         <plugins>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -82,7 +80,7 @@
                         </goals>
                         <configuration>
                             <executable>${java.home}/bin/java</executable>
-                            <commandlineArgs>${runfx.args}</commandlineArgs>
+
                         </configuration>
                     </execution>
                 </executions>  
@@ -94,9 +92,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArguments>
-                        <bootclasspath>${sun.boot.class.path}${path.separator}${java.home}/lib/jfxrt.jar</bootclasspath>
-                    </compilerArguments>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -170,7 +166,5 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
-
     </dependencies>
 </project>
