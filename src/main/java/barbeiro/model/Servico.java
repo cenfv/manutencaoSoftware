@@ -26,6 +26,12 @@ public class Servico implements Serializable {
     @Column(name = "ser_preco", nullable = false)
     private Double preco;
 
+    @Column(name = "ser_duracao", nullable = false)
+    private int duracao;
+
+    @Column(name = "ser_detalhes", nullable = true)
+    private String detalhes;
+
     public long getId() {
         return id;
     }
@@ -48,6 +54,22 @@ public class Servico implements Serializable {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public String getDetalhes() {
+        return detalhes;
+    }
+
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
     }
 
     @Override

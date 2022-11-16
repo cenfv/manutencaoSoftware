@@ -86,12 +86,15 @@ public class ControleServicos implements Initializable, Cadastro {
         TableColumn<Servico, Long> colunaId = new TableColumn<>("Id");
         TableColumn<Servico, String> colunaNome = new TableColumn<>("Nome");
         TableColumn<Servico, Double> colunaPreco = new TableColumn<>("Preço");
+        TableColumn<Servico, Integer> colunaDuracao = new TableColumn<>("Duração");
+        TableColumn<Servico, String> colunaDetalhes = new TableColumn<>("Detalhes");
 
-        tableView.getColumns().addAll(colunaId, colunaNome, colunaPreco);
+        tableView.getColumns().addAll(colunaId, colunaNome, colunaPreco, colunaDuracao, colunaDetalhes);
         colunaId.setCellValueFactory(new PropertyValueFactory("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
-
+        colunaDuracao.setCellValueFactory(new PropertyValueFactory("duracao"));
+        colunaDetalhes.setCellValueFactory(new PropertyValueFactory("detalhes"));
     }
 
     @Override
