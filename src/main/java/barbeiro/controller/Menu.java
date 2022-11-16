@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -31,6 +32,8 @@ public class Menu implements Initializable {
     private HBox btnFuncionarios;
     @FXML
     private HBox btnSair;
+    @FXML
+    private Text lblNome;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,6 +76,7 @@ public class Menu implements Initializable {
         }
         mainPane.setCenter(root);
         selecionado = ui;
+        lblNome.setText("Seja bem-vindo, "+Login.funcionario.getNome());
         atualizarStyle();
     }
     private void atualizarStyle(){

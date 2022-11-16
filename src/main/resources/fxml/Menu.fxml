@@ -66,6 +66,11 @@
                   </Text>
                </children>
             </HBox>
+            <Text fx:id="lblNome" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja bem-vindo, ">
+               <HBox.margin>
+                  <Insets left="300.0" top="50.0" />
+               </HBox.margin>
+            </Text>
             <HBox fx:id="btnSair" onMouseClicked="#handleSignOut" prefHeight="60.0" prefWidth="150.0" style="-fx-alignment: center;" styleClass="dashboard_menu_items">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dashboard_menu_items" text="Sair" textAlignment="CENTER" wrappingWidth="81.0">
@@ -75,7 +80,7 @@
                   </Text>
                </children>
                <HBox.margin>
-                  <Insets left="340.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </HBox>
          </children>
