@@ -61,7 +61,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <ComboBox fx:id="comboBoxFuncionario" prefHeight="25.0" prefWidth="215.0">
+                  <ComboBox fx:id="comboBoxFuncionario" prefHeight="25.0" prefWidth="215.0" promptText="Selecione um Funcionário">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
@@ -78,7 +78,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <ComboBox fx:id="comboBoxCliente" prefHeight="25.0" prefWidth="215.0">
+                  <ComboBox fx:id="comboBoxCliente" prefHeight="25.0" prefWidth="215.0" promptText="Selecione um Cliente">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
@@ -95,7 +95,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <ComboBox fx:id="comboBoxServico" prefHeight="25.0" prefWidth="215.0">
+                  <ComboBox fx:id="comboBoxServico" prefHeight="25.0" prefWidth="215.0" promptText="Selecione um Serviço">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
@@ -112,7 +112,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <ComboBox fx:id="comboBoxPago" prefHeight="25.0" prefWidth="124.0">
+                  <ComboBox fx:id="comboBoxPago" prefHeight="25.0" prefWidth="215.0" promptText="Selecione uma opção">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>

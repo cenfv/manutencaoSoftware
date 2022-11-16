@@ -27,7 +27,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="TextFieldCidade" prefHeight="25.0" prefWidth="214.0">
+                        <TextField fx:id="TextFieldCidade" prefHeight="25.0" prefWidth="214.0" promptText="Cornélio Procópio">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -41,7 +41,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <ComboBox fx:id="comboBoxEstado" prefHeight="25.0" prefWidth="73.0">
+                        <ComboBox fx:id="comboBoxEstado" prefHeight="25.0" prefWidth="94.0" promptText="Estado">
                            <HBox.margin>
                               <Insets left="11.0" />
                            </HBox.margin>
@@ -55,7 +55,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="textFieldCodigoPostal" prefHeight="25.0" prefWidth="176.0">
+                        <TextField fx:id="textFieldCodigoPostal" prefHeight="25.0" prefWidth="176.0" promptText="86300-000">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -69,7 +69,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="textFIeldRua" prefHeight="25.0" prefWidth="176.0">
+                        <TextField fx:id="textFIeldRua" prefHeight="25.0" prefWidth="176.0" promptText="Antônio Silveira Brasil">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -83,7 +83,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="textFieldNumero" prefHeight="25.0" prefWidth="176.0">
+                        <TextField fx:id="textFieldNumero" prefHeight="25.0" prefWidth="176.0" promptText="30">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -97,7 +97,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="textFieldBairro" prefHeight="25.0" prefWidth="176.0">
+                        <TextField fx:id="textFieldBairro" prefHeight="25.0" prefWidth="176.0" promptText="Centro">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -111,7 +111,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="textFieldComplemento" prefHeight="25.0" prefWidth="176.0">
+                        <TextField fx:id="textFieldComplemento" prefHeight="25.0" prefWidth="176.0" promptText="Casa">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>

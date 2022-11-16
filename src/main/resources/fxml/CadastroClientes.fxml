@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import barbeiro.widgets.MaskField?>
 <AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="600.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="barbeiro.controller.CadastroClientes">
     <stylesheets>
         <URL value="@/styles/cadastroclientes.css" />
@@ -26,7 +27,7 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="textFieldNome" prefHeight="25.0" prefWidth="345.0">
+                  <TextField fx:id="textFieldNome" prefHeight="25.0" prefWidth="345.0" promptText="Joaquim Pereira da Silva">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -43,11 +44,11 @@
                         <Insets />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="textFieldCpf" prefHeight="25.0" prefWidth="176.0">
+                  <MaskField mask="WWW.WWW.WWW-WW" fx:id="textFieldCpf" prefHeight="25.0" prefWidth="176.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </TextField>
+                  </MaskField>
                </children>
                <VBox.margin>
                   <Insets left="111.0" top="10.0" />

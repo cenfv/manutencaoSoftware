@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import barbeiro.widgets.MaskField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="barbeiro.controller.ContatoCliente">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="209.0" prefWidth="600.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -27,11 +29,12 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="TextFieldEmail" prefHeight="25.0" prefWidth="345.0">
+                        <TextField promptText="exemplo@email.com" fx:id="TextFieldEmail" focusTraversable="false" prefHeight="25.0" prefWidth="345.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
+
                      </children>
                      <VBox.margin>
                         <Insets left="100.0" top="25.0" />
@@ -44,11 +47,11 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="TextFieldTelefoneC" prefHeight="25.0" prefWidth="176.0">
+                        <MaskField mask="(DD)DDDDD-DDDD" fx:id="TextFieldTelefoneC" prefHeight="25.0" prefWidth="176.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
-                        </TextField>
+                        </MaskField>
                      </children>
                      <VBox.margin>
                         <Insets left="45.0" top="10.0" />
@@ -61,11 +64,11 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="TextFieldTelefoneF" prefHeight="25.0" prefWidth="176.0">
+                        <MaskField mask="(DD)DDDD-DDDD" fx:id="TextFieldTelefoneF" prefHeight="25.0" prefWidth="176.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
-                        </TextField>
+                        </MaskField>
                      </children>
                      <VBox.margin>
                         <Insets left="58.0" top="10.0" />
