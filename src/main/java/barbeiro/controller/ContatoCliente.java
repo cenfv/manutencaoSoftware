@@ -41,7 +41,9 @@ public class ContatoCliente implements Initializable {
 
     @FXML
     private void salvar(ActionEvent event) throws IOException {
-        if(TextFieldEmail.getText().trim().isEmpty() && TextFieldTelefoneC.getText().trim().isEmpty() && TextFieldTelefoneF.getText().trim().isEmpty()){
+        String telC = TextFieldTelefoneC.getText().replace("(","").replace(")","").replace("_","").replace("-","");
+        String telF = TextFieldTelefoneF.getText().replace("(","").replace(")","").replace("_","").replace("-","");
+        if(TextFieldEmail.getText().trim().isEmpty() && telC.trim().isEmpty() && telF.trim().isEmpty()){
             JOptionPane.showMessageDialog(null,"Por favor, preencha ao menos um contato!");
 
         }else {
@@ -49,11 +51,11 @@ public class ContatoCliente implements Initializable {
                 JOptionPane.showMessageDialog(null,"Por favor, insira um email válido");
                 return;
             }
-            if (!TextFieldTelefoneC.getText().isEmpty() && !validarTelefone(TextFieldTelefoneC.getText())){
+            if (!telC.isEmpty() && !validarTelefone(telC)){
                 JOptionPane.showMessageDialog(null,"Por favor, insira um Telefone celular válido");
                 return;
             }
-            if (!TextFieldTelefoneF.getText().isEmpty() && !validarTelefone(TextFieldTelefoneF.getText())){
+            if (!telF.isEmpty() && !validarTelefone(telF)){
                 JOptionPane.showMessageDialog(null,"Por favor, insira um Telefone fixo válido");
                 return;
             }

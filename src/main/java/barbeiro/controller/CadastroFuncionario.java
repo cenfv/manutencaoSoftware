@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class CadastroFuncionario implements Initializable {
     @FXML
     private TextField textFieldEmail;
     @FXML
-    private TextField textFieldSenha;
+    private PasswordField textFieldSenha;
     @FXML
     private ComboBox<String> comboBoxCargo;
     @FXML
