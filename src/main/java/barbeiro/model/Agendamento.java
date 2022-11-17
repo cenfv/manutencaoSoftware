@@ -19,7 +19,7 @@ public class Agendamento implements Serializable {
     @Column(name = "age_horario_fim",nullable = false)
     private LocalTime horarioFim;
     @Column(name = "age_pago", nullable = false)
-    private boolean pago;
+    private boolean pago = false;
     @OneToOne
     @JoinColumn(name = "usu_id",nullable = false)
     private Funcionario funcionario;

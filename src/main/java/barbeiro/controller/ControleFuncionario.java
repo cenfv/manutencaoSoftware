@@ -30,7 +30,7 @@ public class ControleFuncionario implements Initializable, Cadastro {
     private ObservableList<Funcionario> observableList = FXCollections.observableArrayList();
     private List<Funcionario> listaFuncionarios;
     public static Funcionario funcionarioSelecionado = new Funcionario();
-    public static Funcionario novoFuncionario = new Funcionario();
+    public static Funcionario novoFuncionario;
     @FXML
     private TableView<Funcionario> tableView;
     @FXML
@@ -99,14 +99,7 @@ public class ControleFuncionario implements Initializable, Cadastro {
 
     @FXML
     private void adicionar(ActionEvent event) throws IOException {
-        Funcionario novoFuncionario = new Funcionario();
-        novoFuncionario.setNome("");
-        novoFuncionario.setCpf("");
-        novoFuncionario.setEmail("");
-        novoFuncionario.setSenha("");
-        novoFuncionario.setCargo(0);
-        novoFuncionario.setFuncao("");
-
+        novoFuncionario = new Funcionario();
         CadastroFuncionario.ALTERAR = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CadastrarUsuarios.fxml"));
         Scene scene = new Scene(root);

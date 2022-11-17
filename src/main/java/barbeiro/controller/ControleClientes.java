@@ -46,7 +46,7 @@ public class ControleClientes implements Initializable, Cadastro {
     private ObservableList<Cliente> observableList = FXCollections.observableArrayList();
     private List<Cliente> listaClientes;
     public static Cliente clienteSelecionado = new Cliente();
-    public static Cliente novoCliente = new Cliente();
+    public static Cliente novoCliente;
     private int pesquisaSelecionada = 0;
     @FXML
     private TableView<Cliente> tableView;
@@ -162,28 +162,7 @@ public class ControleClientes implements Initializable, Cadastro {
 
     @FXML
     private void adicionar(ActionEvent event) throws IOException {
-
-        Endereco end = new Endereco();
-        end.setCidade("");
-        end.setEstado("");
-        end.setCodigoPostal(0);
-        end.setRua("");
-        end.setNumero(0);
-        end.setBairro("");
-        end.setComplemento("");
-
-        Contato con = new Contato();
-        con.setEmail("");
-        con.setTelefoneCelular("");
-        con.setTelefoneFixo("");
-
-        novoCliente.setNome("");
-        novoCliente.setCpf("");
-        LocalDate date = LocalDate.of(1900, Month.JANUARY, 1);
-        novoCliente.setDataNascimento(date);
-        novoCliente.setEndereco(end);
-        novoCliente.setContato(con);
-
+        novoCliente = new Cliente();
         CadastroClientes.ALTERAR = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CadastroClientes.fxml"));
         Scene scene = new Scene(root);
@@ -193,7 +172,6 @@ public class ControleClientes implements Initializable, Cadastro {
         stage.initModality(Modality.APPLICATION_MODAL); 
         stage.showAndWait();
         atualizarTabela();
-
     }
 
     @FXML

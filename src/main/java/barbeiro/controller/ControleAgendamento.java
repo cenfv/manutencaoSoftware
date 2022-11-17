@@ -37,7 +37,7 @@ public class ControleAgendamento implements Initializable, Cadastro {
     private ObservableList<Agendamento> observableList = FXCollections.observableArrayList();
     private List<Agendamento> listaAgendamentos;
     public static Agendamento agendamentoSelecionado = new Agendamento();
-    public static Agendamento novoAgendamento = new Agendamento();
+    public static Agendamento novoAgendamento;
     private int pesquisaSelecionada = 0;
     @FXML
     private TableView<Agendamento> tableView;
@@ -52,20 +52,7 @@ public class ControleAgendamento implements Initializable, Cadastro {
 
     @FXML
     private void adicionar(ActionEvent event) throws IOException {
-        Agendamento novoAgendamento = new Agendamento();
-        novoAgendamento.setPago(false);
-        LocalDate date = LocalDate.of(1900, Month.JANUARY, 1);
-        novoAgendamento.setData(date);
-        LocalTime hora = LocalTime.of(0,0);
-        novoAgendamento.setHorarioInicio(hora);
-        Servico servico = new Servico();
-        Cliente cliente = new Cliente();
-        Funcionario funcionario = new Funcionario();
-        novoAgendamento.setUsuario(funcionario);
-        novoAgendamento.setCliente(cliente);
-        novoAgendamento.setServico(servico);
-
-
+        novoAgendamento = new Agendamento();
         CadastroAgendamento.ALTERAR = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CadastroAgendamento.fxml"));
         Scene scene = new Scene(root);

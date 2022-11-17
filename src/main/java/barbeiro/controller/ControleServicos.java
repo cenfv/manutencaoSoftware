@@ -30,7 +30,7 @@ public class ControleServicos implements Initializable, Cadastro {
     private ObservableList<Servico> observableList = FXCollections.observableArrayList();
     private List<Servico> listaServicos;
     public static Servico servicoSelecionado = new Servico();
-    public static Servico novoServico = new Servico();
+    public static Servico novoServico;
     @FXML
     private TableView<Servico> tableView;
     @FXML
@@ -45,10 +45,7 @@ public class ControleServicos implements Initializable, Cadastro {
 
     @FXML
     private void adicionar(ActionEvent event) throws IOException {
-        Servico novoServico = new Servico();
-        novoServico.setNome("");
-        novoServico.setPreco(0.0);
-
+        novoServico = new Servico();
         CadastroServicos.ALTERAR = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CadastroServicos.fxml"));
         Scene scene = new Scene(root);
