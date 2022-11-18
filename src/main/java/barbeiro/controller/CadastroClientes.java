@@ -130,12 +130,12 @@ public class CadastroClientes implements Initializable {
                 LocalDate date = LocalDate.now();
                 ControleClientes.novoCliente.setDataCadastro(date);
 
-                if( ControleClientes.novoCliente.getContato().getEmail().isEmpty() && ControleClientes.novoCliente.getContato().getTelefoneCelular().isEmpty() && ControleClientes.novoCliente.getContato().getTelefoneFixo().isEmpty() )
+                if( ControleClientes.novoCliente.getContato().getEmail() == null && ControleClientes.novoCliente.getContato().getTelefoneCelular() == null && ControleClientes.novoCliente.getContato().getTelefoneFixo() == null)
                 {
                     JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um contato para o cliente");
                     return;
                 }
-                if(ControleClientes.novoCliente.getEndereco().getRua().isEmpty()){
+                if(ControleClientes.novoCliente.getEndereco().getRua() == null){
                     JOptionPane.showMessageDialog(null,"Por favor, cadastre ao menos um endereço para o cliente");
                     return;
                 }

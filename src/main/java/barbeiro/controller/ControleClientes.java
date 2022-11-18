@@ -47,6 +47,8 @@ public class ControleClientes implements Initializable, Cadastro {
     private List<Cliente> listaClientes;
     public static Cliente clienteSelecionado = new Cliente();
     public static Cliente novoCliente;
+    public static Endereco novoEndereco;
+    public static Contato novoContato;
     private int pesquisaSelecionada = 0;
     @FXML
     private TableView<Cliente> tableView;
@@ -163,6 +165,11 @@ public class ControleClientes implements Initializable, Cadastro {
     @FXML
     private void adicionar(ActionEvent event) throws IOException {
         novoCliente = new Cliente();
+        novoEndereco = new Endereco();
+        novoContato = new Contato();
+        novoCliente.setContato(novoContato);
+        novoCliente.setEndereco(novoEndereco);
+
         CadastroClientes.ALTERAR = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CadastroClientes.fxml"));
         Scene scene = new Scene(root);
