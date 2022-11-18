@@ -197,8 +197,14 @@ public class ControleClientes implements Initializable, Cadastro {
 
     @FXML
     private void excluir(ActionEvent event) {
-        clienteDao.excluir(clienteSelecionado);
-        JOptionPane.showMessageDialog(null,"Cliente excluido com sucesso");
+        try {
+            clienteDao.excluir(clienteSelecionado);
+            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso");
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "O registro possui relações dependentes","Erro ao excluir",JOptionPane.ERROR_MESSAGE);
+
+        }
         atualizarTabela();
     }
 

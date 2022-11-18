@@ -72,8 +72,13 @@ public class ControleServicos implements Initializable, Cadastro {
 
     @FXML
     private void excluir(ActionEvent event) {
-        servicoDao.excluir(servicoSelecionado);
-        JOptionPane.showMessageDialog(null,"Serviço excluído com sucesso!");
+        try {
+            servicoDao.excluir(servicoSelecionado);
+            JOptionPane.showMessageDialog(null, "Serviço excluído com sucesso!");
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "O registro possui relações dependentes","Erro ao excluir",JOptionPane.ERROR_MESSAGE);
+
+        }
         atualizarTabela();
     }
 

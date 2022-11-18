@@ -92,8 +92,14 @@ public class ControleFuncionario implements Initializable, Cadastro {
 
     @FXML
     private void excluir(ActionEvent event) {
-        funcionarioDao.excluir(funcionarioSelecionado);
-        JOptionPane.showMessageDialog(null,"Funcionário excluido com sucesso!");
+        try {
+            funcionarioDao.excluir(funcionarioSelecionado);
+            JOptionPane.showMessageDialog(null, "Funcionário excluido com sucesso!");
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "O registro possui relações dependentes","Erro ao excluir",JOptionPane.ERROR_MESSAGE);
+
+        }
         atualizarTabela();
     }
 

@@ -79,8 +79,13 @@ public class ControleAgendamento implements Initializable, Cadastro {
 
     @FXML
     private void excluir(ActionEvent event) {
-        agendamentoDao.excluir(agendamentoSelecionado);
-        JOptionPane.showMessageDialog(null,"Serviço excluido com sucesso");
+        try {
+            agendamentoDao.excluir(agendamentoSelecionado);
+            JOptionPane.showMessageDialog(null, "Serviço excluido com sucesso");
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "O registro possui relações dependentes","Erro ao excluir",JOptionPane.ERROR_MESSAGE);
+
+        }
         atualizarTabela();
     }
 

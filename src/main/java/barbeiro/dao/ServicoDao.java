@@ -46,7 +46,7 @@ public class ServicoDao {
             session.getTransaction().commit();
             session.close();
         }catch(Exception ex){
-            System.out.println(ex);
+            throw ex;
         }
     }
 }

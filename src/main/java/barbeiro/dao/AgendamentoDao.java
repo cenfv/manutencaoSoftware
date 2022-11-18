@@ -82,7 +82,7 @@ public class AgendamentoDao {
             session.getTransaction().commit();
             session.close();
         }catch(Exception ex){
-            System.out.println(ex);
+           throw ex;
         }
     }
     public long consultarNRegistros(int mes, int ano) {

@@ -70,7 +70,7 @@ public class ClienteDao {
             session.getTransaction().commit();
             session.close();
         }catch(Exception ex){
-            System.out.println(ex);
+            throw ex;
         }
     }
     public long consultarTodosNRegistros() {

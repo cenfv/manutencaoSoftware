@@ -98,5 +98,5 @@ public class CadastroServicos implements Initializable {
         Stage thisStage = (Stage) btnCancelar.getScene().getWindow();
         thisStage.close();
     }
-    
+
 }

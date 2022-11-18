@@ -54,7 +54,7 @@ public class FuncionarioDao {
             session.getTransaction().commit();
             session.close();
         }catch(Exception ex){
-            System.out.println(ex);
+            throw ex;
         }
     }
 
