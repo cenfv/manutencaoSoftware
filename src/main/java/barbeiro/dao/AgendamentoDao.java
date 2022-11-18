@@ -1,6 +1,7 @@
 package barbeiro.dao;
 
 import barbeiro.model.Agendamento;
+import barbeiro.model.Funcionario;
 import org.hibernate.Session;
 
 import java.text.MessageFormat;
@@ -61,6 +62,20 @@ public class AgendamentoDao {
         Session session = ConexaoBanco.getSessionFactory().openSession();
         session.beginTransaction();
         lista = session.createQuery("from Agendamento WHERE age_data = '"+data+"'").getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return lista;
+    }
+    public List<Agendamento> consultarPorFuncionario(String nome) {
+        List<Agendamento> lista = new ArrayList<>();
+        Session session = ConexaoBanco.getSessionFactory().openSession();
+        session.beginTransaction();
+        if (nome.length() == 0) {
+            lista = session.createQuery("from Agendamento").getResultList();
+        } else {
+            lista = session.createQuery("select A from Agendamento as A INNER JOIN Funcionario as B ON B.nome like " + "'" + nome + "%' and A.funcionario = B.id ").getResultList();
+
+        }
         session.getTransaction().commit();
         session.close();
         return lista;

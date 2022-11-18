@@ -99,4 +99,19 @@ public class Agendamento implements Serializable {
     public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
+
+    @Override
+    public String toString() {
+        return "Agendamento{" +
+                "id=" + id +
+                ", data=" + data +
+                ", horarioInicio=" + horarioInicio +
+                ", horarioFim=" + horarioFim +
+                ", pago=" + pago +
+                ", funcionario=" + funcionario +
+                ", cliente=" + cliente +
+                ", servico=" + servico +
+                ", dataCadastro=" + dataCadastro +
+                '}';
+    }
 }

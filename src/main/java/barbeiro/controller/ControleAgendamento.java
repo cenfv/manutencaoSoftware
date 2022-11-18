@@ -6,6 +6,7 @@ import barbeiro.model.Cliente;
 import barbeiro.model.Servico;
 import barbeiro.model.Funcionario;
 import barbeiro.utils.ColumnFormatter;
+import barbeiro.utils.ComboBoxLists;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -43,9 +45,18 @@ public class ControleAgendamento implements Initializable, Cadastro {
     private TableView<Agendamento> tableView;
     @FXML
     private DatePicker datePickerAgendamento;
+    @FXML
+    private ComboBox<?> cbPesquisa;
+
+    @FXML
+    private TextField textFieldPesquisa;
+    @FXML
+    private HBox hBoxPesquisa;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cbPesquisa.setItems(ComboBoxLists.gerarPesquisaAgendamento());
+        cbPesquisa.getSelectionModel().selectFirst();
         criarColunasTabela();
         atualizarTabela();
     }
@@ -118,12 +129,14 @@ public class ControleAgendamento implements Initializable, Cadastro {
         observableList.clear();
         switch (pesquisaSelecionada){
             case 0:
+                listaAgendamentos = agendamentoDao.consultarPorFuncionario(textFieldPesquisa.getText());
+                break;
+            case 1:
                 if(datePickerAgendamento.getValue() == null){
                     listaAgendamentos = agendamentoDao.consultar();
                 }else{
                     listaAgendamentos = agendamentoDao.consultarData(datePickerAgendamento.getValue());
                 }
-
                 break;
         }
 
@@ -133,6 +146,27 @@ public class ControleAgendamento implements Initializable, Cadastro {
         tableView.getItems().setAll(observableList);
         tableView.getSelectionModel().selectFirst();
         agendamentoSelecionado = tableView.getSelectionModel().getSelectedItem();
+    }
+    @FXML
+    private void mudarPesquisa(){
+        String res = cbPesquisa.getSelectionModel().getSelectedItem().toString();
+        switch (res){
+            case "Nome do funcionário":
+                hBoxPesquisa.setVisible(false);
+                hBoxPesquisa.setDisable(true);
+                textFieldPesquisa.setVisible(true);
+                textFieldPesquisa.setDisable(false);
+                textFieldPesquisa.setPromptText("Pesquisar funcionário");
+                pesquisaSelecionada = 0;
+                break;
+            case "Data Específica":
+                hBoxPesquisa.setVisible(true);
+                hBoxPesquisa.setDisable(false);
+                textFieldPesquisa.setVisible(false);
+                textFieldPesquisa.setDisable(true);
+                pesquisaSelecionada = 1;
+                break;
+        }
     }
     @FXML
     private void limpar(){

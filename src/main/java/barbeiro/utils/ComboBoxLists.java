@@ -29,6 +29,7 @@ public class ComboBoxLists {
         );
         return obsList;
     }
+
      public static ObservableList gerarEstados(){
         obsEstados = FXCollections.observableArrayList(
                 "AC",
@@ -78,7 +79,9 @@ public class ComboBoxLists {
     }
     public static ObservableList gerarPesquisaAgendamento(){
         obsList = FXCollections.observableArrayList(
+                "Nome do funcionário",
                 "Data Específica"
+
         );
         return obsList;
     }
