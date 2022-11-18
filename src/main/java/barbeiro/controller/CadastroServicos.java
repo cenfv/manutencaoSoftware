@@ -38,6 +38,11 @@ public class CadastroServicos implements Initializable {
         carregarDados();
         valueFactory.setValue(30);
         spinnerTime.setValueFactory(valueFactory);
+        spinnerTime.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                spinnerTime.increment(0); // para atualizar o valor do spinner
+            }
+        });
     }    
     private void carregarDados() {
         if (ALTERAR == 1) {

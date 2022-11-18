@@ -3,6 +3,7 @@ package barbeiro.dao;
 import barbeiro.model.Agendamento;
 import org.hibernate.Session;
 
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,9 +15,10 @@ public class AgendamentoDao {
         try{
 
             List agendamentos = new ArrayList<>();
-            agendamentos = session.createQuery("from Agendamento WHERE age_data = '"+agendamento.getData()+"' AND usu_id = '"+agendamento.getUsuario().getId()+"' AND age_horario_fim  BETWEEN '"+ agendamento.getHorarioInicio() +
-                    "' AND ADDTIME('"+agendamento.getHorarioInicio()+"', '00:30:00') ").getResultList();
+            String queryString = MessageFormat.format("FROM Agendamento WHERE age_data = ''{0}'' AND usu_id = {1} AND age_horario_inicio BETWEEN ''{2}'' AND " +
+                    "''{3}'' or age_horario_fim BETWEEN ''{2}'' AND ''{3}'' ",agendamento.getData(),agendamento.getUsuario().getId(),agendamento.getHorarioInicio(),agendamento.getHorarioFim());
 
+            agendamentos = session.createQuery(queryString).getResultList();
             if(agendamentos.size() > 0 ){
                 return false;
             }
@@ -31,7 +33,7 @@ public class AgendamentoDao {
         try {
             Session session = ConexaoBanco.getSessionFactory().openSession();
             session.beginTransaction();
-            agendamento.setHorarioFim(agendamento.getHorarioInicio().plusMinutes(30));
+            agendamento.setHorarioFim(agendamento.getHorarioInicio().plusMinutes(agendamento.getServico().getDuracao()));
             boolean validationRes = validaAgendamento(agendamento,session);
             if(!validationRes) return false;
             session.merge(agendamento);
