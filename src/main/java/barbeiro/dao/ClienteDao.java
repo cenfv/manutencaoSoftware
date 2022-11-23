@@ -47,13 +47,14 @@ public class ClienteDao {
         session.close();
         return lista;
     }
+
     public long consultarNRegistros(int mes, int ano) {
         int mesfim = mes+1;
         long qtd = 0;
         Session session = ConexaoBanco.getSessionFactory().openSession();
         session.beginTransaction();
         if(mes == 12){
-            qtd = (long) session.createQuery("select count(id) from Cliente WHERE cli_data_cadastro BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mes + "31' ").uniqueResult();
+            qtd = (long) session.createQuery("select count(id) from Cliente WHERE cli_data_cadastro BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mes + "-31' ").uniqueResult();
         }else{
             qtd = (long) session.createQuery("select count(id) from Cliente WHERE cli_data_cadastro BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mesfim + "-01' ").uniqueResult();
         }
@@ -73,6 +74,7 @@ public class ClienteDao {
             throw ex;
         }
     }
+
     public long consultarTodosNRegistros() {
         long qtd = 0;
         Session session = ConexaoBanco.getSessionFactory().openSession();

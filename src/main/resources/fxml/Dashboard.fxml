@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="barbeiro.controller.DashboardController">
+   <children>
+      <VBox layoutX="254.0" layoutY="20.0" prefHeight="169.0" prefWidth="1120.0" style="-fx-background-color: #FFF; -fx-background-radius: 0px 0px 30px 30px; -fx-border-radius: 0px 0px 30px 30px;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane style="-fx-background-color: #fff;">
+               <children>
+                  <Text layoutX="47.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD" AnchorPane.leftAnchor="30.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </AnchorPane>
+            <HBox prefHeight="80.0" prefWidth="545.0">
+               <children>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card1" stylesheets="@../styles/dashboardcenter.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox layoutX="31.0" layoutY="14.0" prefHeight="0.0" prefWidth="175.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text fx:id="TextAgendamentos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card2" stylesheets="@../styles/dashboardcenter.css" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <VBox prefHeight="85.0" prefWidth="175.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text fx:id="TextClientes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card3" stylesheets="@../styles/dashboardcenter.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="0.0" prefWidth="175.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text fx:id="TextServicos" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="0.0" styleClass="card4" stylesheets="@../styles/dashboardcenter.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="0.0" prefWidth="175.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text fx:id="TextFuncionarios" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="29.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="16.0" left="30.0" right="250.0" />
+               </VBox.margin>
+            </HBox>
+         </children></VBox>
+      <VBox layoutX="50.0" layoutY="493.0" prefHeight="254.0" prefWidth="361.0" AnchorPane.topAnchor="390.0">
+         <children>
+            <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos Realizados" wrappingWidth="340.474609375">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Text>
+            <BarChart fx:id="barChartAgendamentos" prefHeight="237.0" prefWidth="361.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </VBox>
+      <VBox layoutX="411.0" layoutY="493.0" prefHeight="254.0" prefWidth="361.0" AnchorPane.topAnchor="390.0">
+         <children>
+            <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes Cadastrados" wrappingWidth="340.474609375">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Text>
+            <BarChart fx:id="barChartClientes" prefHeight="237.0" prefWidth="361.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </VBox>
+      <VBox layoutX="772.0" layoutY="493.0" prefHeight="254.0" prefWidth="361.0" AnchorPane.topAnchor="390.0">
+         <children>
+            <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Lucro obtido" wrappingWidth="340.474609375">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Text>
+            <BarChart fx:id="barChartLucro" prefHeight="237.0" prefWidth="361.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </VBox>
+      <Separator layoutX="63.0" layoutY="408.0" prefHeight="5.0" prefWidth="1081.0" AnchorPane.topAnchor="305.0" />
+      <AnchorPane layoutX="60.0" layoutY="211.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card5" stylesheets="@../styles/dashboardcenter.css" AnchorPane.topAnchor="190.0">
+         <children>
+            <VBox layoutX="61.0" layoutY="9.0" prefHeight="85.0" prefWidth="150.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="9.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendamentos Hoje">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="TextAgendamentosHoje" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <FontAwesomeIconView fill="WHITE" glyphName="SCISSORS" layoutX="22.0" layoutY="68.0" size="35" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="317.0" layoutY="260.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card4" stylesheets="@../styles/dashboardcenter.css" AnchorPane.topAnchor="260.0" />
+      <AnchorPane layoutX="329.0" layoutY="213.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="card6" stylesheets="@../styles/dashboardcenter.css" AnchorPane.leftAnchor="329.0" AnchorPane.topAnchor="190.0">
+         <children>
+            <VBox layoutX="65.0" layoutY="5.0" prefHeight="85.0" prefWidth="174.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="9.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pagamentos pendentes">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="TextPagamentosPendentes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <FontAwesomeIconView fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="65.0" size="35" AnchorPane.leftAnchor="14.0" />
+         </children>
+      </AnchorPane>
+      <Separator layoutX="300.0" layoutY="198.0" orientation="VERTICAL" prefHeight="95.0" prefWidth="6.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="190.0" />
+      <HBox fx:id="boxPeriodo" disable="true" layoutX="342.0" layoutY="433.0" style="-fx-alignment: center; -fx-spacing: 8;" visible="false" AnchorPane.topAnchor="343.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Início" />
+            <DatePicker fx:id="dataInicio" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fim" />
+            <DatePicker fx:id="dataFim" />
+         </children>
+      </HBox>
+      <Text layoutX="63.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Período" AnchorPane.topAnchor="319.892578125">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <HBox layoutX="63.0" layoutY="339.0" prefWidth="260.0" style="-fx-alignment: center;" AnchorPane.topAnchor="343.0">
+         <children>
+            <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Pesquisar por:">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Text>
+            <ComboBox fx:id="cbPesquisa" onAction="#mudarPesquisa" prefHeight="25.0" prefWidth="180.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+      <Spinner fx:id="spinnerData" layoutX="342.0" layoutY="433.0" prefHeight="25.0" prefWidth="90.0" AnchorPane.topAnchor="343.0" />
+      <Separator layoutX="332.0" layoutY="434.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="6.0" AnchorPane.topAnchor="343.0" />
+   </children>
+</AnchorPane>

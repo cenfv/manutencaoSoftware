@@ -46,7 +46,19 @@ public class FuncionarioDao {
 
         return user;
     }
-    
+
+    public long consultarTodosNRegistros() {
+        long qtd = 0;
+        Session session = ConexaoBanco.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        qtd = (long) session.createQuery("select count(id) from Funcionario").uniqueResult();
+
+
+        session.getTransaction().commit();
+        session.close();
+        return qtd;
+    }
     public void excluir(Funcionario funcionario){
         try (Session session = ConexaoBanco.getSessionFactory().openSession()) {
             session.beginTransaction();

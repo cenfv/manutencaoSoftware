@@ -85,6 +85,15 @@ public class ComboBoxLists {
         );
         return obsList;
     }
+
+    public static ObservableList gerarPesquisaDashboard(){
+        obsList = FXCollections.observableArrayList(
+                "Ano",
+                "Intervalo de datas"
+
+        );
+        return obsList;
+    }
     public static ObservableList gerarAnos(){
         obsListAnos= FXCollections.observableArrayList(
                 2021,

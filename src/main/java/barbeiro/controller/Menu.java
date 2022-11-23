@@ -35,9 +35,12 @@ public class Menu implements Initializable {
     @FXML
     private Text lblNome;
 
+    @FXML
+    private HBox btnDashboard;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadUI("Agendamento");
+        handleOpenDashboard();
     }
 
     @FXML
@@ -49,6 +52,10 @@ public class Menu implements Initializable {
     @FXML
     private void handleOpenAgendamentos(){
         loadUI("Agendamento");
+    }
+    @FXML
+    private void handleOpenDashboard(){
+        loadUI("Dashboard");
     }
     @FXML
     private void handleOpenFuncionarios(MouseEvent event) {
@@ -82,6 +89,9 @@ public class Menu implements Initializable {
     private void atualizarStyle(){
         resetarStyle();
         switch (selecionado){
+            case "Dashboard":
+                btnDashboard.setStyle("-fx-background-color: #020915; -fx-border-width: 0px 0px 4px 0px;-fx-border-color: #fff;-fx-alignment: center");
+                break;
             case "Clientes":
                 btnClientes.setStyle("-fx-background-color: #020915; -fx-border-width: 0px 0px 4px 0px;-fx-border-color: #fff;-fx-alignment: center");
                 break;
@@ -97,6 +107,7 @@ public class Menu implements Initializable {
         }
     }
     private void resetarStyle(){
+        btnDashboard.setStyle("-fx-alignment: center");
         btnClientes.setStyle("-fx-alignment: center");
         btnServicos.setStyle("-fx-alignment: center");
         btnFuncionarios.setStyle("-fx-alignment: center");

@@ -38,7 +38,18 @@ public class ServicoDao {
         session.close();
         return lista;
     }
-    
+    public long consultarTodosNRegistros() {
+        long qtd = 0;
+        Session session = ConexaoBanco.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        qtd = (long) session.createQuery("select count(id) from Servico").uniqueResult();
+
+
+        session.getTransaction().commit();
+        session.close();
+        return qtd;
+    }
     public void excluir(Servico servico){
         try (Session session = ConexaoBanco.getSessionFactory().openSession()) {
             session.beginTransaction();

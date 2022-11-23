@@ -56,6 +56,7 @@ public class AgendamentoDao {
         session.close();
         return lista;
     }
+
     public List<Agendamento> consultarData(LocalDate data) {
         List<Agendamento> lista = new ArrayList<>();
         Session session = ConexaoBanco.getSessionFactory().openSession();
@@ -99,21 +100,23 @@ public class AgendamentoDao {
            throw ex;
         }
     }
+
     public long consultarNRegistros(int mes, int ano) {
         int mesfim = mes+1;
         long qtd = 0;
         Session session = ConexaoBanco.getSessionFactory().openSession();
         session.beginTransaction();
         if(mes == 12){
-            qtd = (long) session.createQuery("select count(id) from Agendamento WHERE age_data_cadastro BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mes + "31' ").uniqueResult();
+            qtd = (long) session.createQuery("select count(id) from Agendamento WHERE age_data BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mes + "-31' ").uniqueResult();
         }else{
-            qtd = (long) session.createQuery("select count(id) from Agendamento WHERE age_data_cadastro BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mesfim + "-01' ").uniqueResult();
+            qtd = (long) session.createQuery("select count(id) from Agendamento WHERE age_data BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mesfim + "-01' ").uniqueResult();
         }
 
         session.getTransaction().commit();
         session.close();
         return qtd;
     }
+
     public long consultarTodosNRegistros() {
         long qtd = 0;
         Session session = ConexaoBanco.getSessionFactory().openSession();
@@ -126,6 +129,7 @@ public class AgendamentoDao {
         session.close();
         return qtd;
     }
+
     public long consultarNPagamentosPendentes() {
         long qtd = 0;
         Session session = ConexaoBanco.getSessionFactory().openSession();
@@ -138,4 +142,26 @@ public class AgendamentoDao {
         session.close();
         return qtd;
     }
+    public double consultarLucro(int mes, int ano) {
+        int mesfim = mes+1;
+        double qtd = 0;
+        Session session = ConexaoBanco.getSessionFactory().openSession();
+        session.beginTransaction();
+        try {
+            if (mes == 12) {
+                qtd = (double) session.createQuery("SELECT SUM(B.preco) FROM Agendamento AS A, Servico AS B " +
+                        "WHERE age_data BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mes + "-31' AND A.servico = B.id").uniqueResult();
+            } else {
+                qtd = (double) session.createQuery("SELECT SUM(B.preco) FROM Agendamento AS A, Servico AS B " +
+                        "WHERE age_data BETWEEN '" + ano + "-" + mes + "-01' and '" + ano + "-" + mesfim + "-01' AND A.servico = B.id ").uniqueResult();
+            }
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+        System.out.println(qtd);
+        session.getTransaction().commit();
+        session.close();
+        return qtd;
+    }
+
 }
