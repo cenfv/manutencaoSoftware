@@ -16,9 +16,8 @@ public class AgendamentoDao {
         try{
 
             List agendamentos = new ArrayList<>();
-            String queryString = MessageFormat.format("FROM Agendamento WHERE age_data = ''{0}'' AND usu_id = {1} AND age_horario_inicio BETWEEN ''{2}'' AND " +
-                    "''{3}'' or age_horario_fim BETWEEN ''{2}'' AND ''{3}'' ",agendamento.getData(),agendamento.getUsuario().getId(),agendamento.getHorarioInicio(),agendamento.getHorarioFim());
-
+            String queryString = MessageFormat.format("FROM Agendamento WHERE age_data = ''{0}'' AND usu_id = {1} AND (age_horario_inicio BETWEEN ''{2}'' AND " +
+                    "''{3}'' or age_horario_fim BETWEEN ''{2}'' AND ''{3}'' )",agendamento.getData(),agendamento.getUsuario().getId(),agendamento.getHorarioInicio(),agendamento.getHorarioFim());
             agendamentos = session.createQuery(queryString).getResultList();
             if(agendamentos.size() > 0 ){
                 return false;
